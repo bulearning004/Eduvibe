@@ -1,11 +1,31 @@
-<div align="center">
+# EduVibe - AI Writing Feedback
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+ระบบผู้ช่วยตรวจงานเขียนอัจฉริยะสำหรับอาจารย์
 
-  <h1>Built with AI Studio</h2>
+## การเตรียมตัวสำหรับ GitHub และ Netlify
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+โปรเจกต์นี้พร้อมสำหรับการ Deploy บน Netlify ผ่าน GitHub แล้ว โดยมีขั้นตอนดังนี้:
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+### 1. เชื่อมต่อกับ GitHub
+- ไปที่เมนู **Settings** (ไอคอนฟันเฟือง) ใน AI Studio
+- เลือก **Export to GitHub**
+- ทำตามขั้นตอนเพื่อสร้าง Repository ใหม่บน GitHub ของคุณ
 
-</div>
+### 2. Deploy บน Netlify
+- เข้าสู่ระบบ [Netlify](https://www.netlify.com/)
+- คลิก **Add new site** > **Import an existing project**
+- เลือก **GitHub** และเลือก Repository ของ EduVibe
+- Netlify จะตรวจพบการตั้งค่าโดยอัตโนมัติ:
+  - **Build command:** `npm run build`
+  - **Publish directory:** `dist`
+- คลิก **Deploy site**
+
+### 3. ตั้งค่า Environment Variables (สำคัญ)
+หากคุณมีการใช้งาน Gemini API หรือ API อื่นๆ:
+- ไปที่ **Site settings** > **Environment variables** ใน Netlify
+- เพิ่มตัวแปรชื่อ `GEMINI_API_KEY` และใส่ค่า API Key ของคุณ
+- ทำการ **Trigger deploy** ใหม่อีกครั้งเพื่อให้ค่ามีผล
+
+## ไฟล์ที่เพิ่มเข้ามาเพื่อรองรับ Netlify
+- `netlify.toml`: กำหนดค่าการ Build และการจัดการ Routing (SPA Redirects)
+- `.gitignore`: ป้องกันการนำไฟล์ที่ไม่จำเป็นและไฟล์ความลับขึ้น GitHub
